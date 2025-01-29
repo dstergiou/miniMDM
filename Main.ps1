@@ -19,12 +19,13 @@ try {
   Write-Host "Starting configuration..."
 
   Write-Host "`n=== Configuring Screen Auto-lock timeout ==="
-  .\scripts\Set-ScreenLockTimeout.ps1 -DryRun:$DryRun
+  .\scripts\Set-ScreenLockTimeout.ps1 -DryRun:$dryRun
 
   Write-Host "`n=== Configuring BitLocker ==="
-  .\scripts\Enable-BitLocker.ps1 -DryRun:$DryRun
+  .\scripts\Enable-BitLocker.ps1 -DryRun:$dryRun
 
   Write-Host "`n=== Configuring Password Policy ==="
+  .\scripts\Set-PasswordPolicy.ps1 -DryRun:$dryRun
   Write-Host "`n=== Configuring 1Password ==="
   Write-Host "`n=== Configuring Okta Verify ==="
   Write-Host "`n=== Configuring Crowdstrike Falcon ==="
