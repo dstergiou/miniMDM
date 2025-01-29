@@ -22,6 +22,8 @@ try {
   .\scripts\Set-ScreenLockTimeout.ps1 -DryRun:$DryRun
 
   Write-Host "`n=== Configuring BitLocker ==="
+  .\scripts\Enable-BitLocker.ps1 -DryRun:$DryRun
+
   Write-Host "`n=== Configuring Password Policy ==="
   Write-Host "`n=== Configuring 1Password ==="
   Write-Host "`n=== Configuring Okta Verify ==="
