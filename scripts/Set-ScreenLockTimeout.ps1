@@ -11,13 +11,6 @@ if ($dryRun) {
   return
 }
 
-# Prompt user
-$confirm = Read-Host "Do you want to set the screen lock timeout to 10 minutes? (Y/N)"
-if ($confirm -ne "Y") {
-  Write-Host "Screen lock timeout configuration canceled by user."
-  return
-}
-
 # Set Screen auto-lock
 try {
   Write-Host "Configuring screen lock timeout to 10 minutes..."

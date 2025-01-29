@@ -40,13 +40,6 @@ if ($bitLockerStatus -eq "On") {
 } else {
     Write-Host "BitLocker is not enabled on drive $driveLetter."
 
-    # Prompt user
-    $confirm = Read-Host "Do you want to enable BitLocker on drive $driveLetter? (Y/N)"
-    if ($confirm -ne "Y") {
-        Write-Host "BitLocker enablement canceled by user."
-        return
-    }
-
     # Enable BitLocker
     try {
         Write-Host "Enabling BitLocker on drive $driveLetter..."
