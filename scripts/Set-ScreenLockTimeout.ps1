@@ -28,32 +28,11 @@ try {
   Set-ItemProperty -Path $RegKey -Name ScreenSaveActive -Value 1
   Set-ItemProperty -Path $RegKey -Name ScreenSaverIsSecure -Value 1
 
-  # Powercfg setup
-  powercfg.exe /change monitor-timeout-ac $timeoutInSeconds
-  powercfg.exe /change monitor-timeout-dc $timeoutInSeconds
 
   Write-Host "Screen lock timeout set to 10 minutes."
 } catch {
   Write-Host "Failed to set screen lock timeout: $_" -ForegroundColor Red
   throw
-}
-
-# Validate changes powercfg
-try {
-  Write-Host "Validating screen lock timeout settings (powercfg)..."
-
-  $currentTimeoutAC = powercfg.exe /query | Select-String "Monitor timeout AC" | ForEach-Object { $_ -replace ".*Monitor timeout AC\s*", "" }
-  $currentTimeoutDC = powercfg.exe /query | Select-String "Monitor timeout DC" | ForEach-Object { $_ -replace ".*Monitor timeout DC\s*", "" }
-
-  if ($currentTimeoutAC -eq $timeoutInSeconds -and $currentTimeoutDC -eq $timeoutInSeconds) {
-      Write-Host "Validation successful: Screen lock (powercfg) timeout is set to 10 minutes."
-  } else {
-      Write-Host "Validation failed: Screen lock (powercfg) timeout was not set correctly." -ForegroundColor Red
-      Write-Host "Current AC timeout: $currentTimeoutAC seconds"
-      Write-Host "Current DC timeout: $currentTimeoutDC seconds"
-  }
-} catch {
-  Write-Host "Failed to validate screen lock timeout settings: $_" -ForegroundColor Red
 }
 
 # Validate changes registry
