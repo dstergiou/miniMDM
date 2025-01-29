@@ -3,7 +3,6 @@ param (
 )
 
 # Create log directory
-# $logDir = "C:\miniMDM"
 $logDir = ".\Logs"
 if (-not (Test-Path $logDir)) {
   Write-Host "Creating log directory at $logDir ..."
