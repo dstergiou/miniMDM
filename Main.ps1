@@ -20,6 +20,8 @@ try {
   Write-Host "Starting configuration..."
 
   Write-Host "`n=== Configuring Screen Auto-lock timeout ==="
+  .\scripts\Set-ScreenLockTimeout.ps1 -DryRun:$DryRun
+
   Write-Host "`n=== Configuring BitLocker ==="
   Write-Host "`n=== Configuring Password Policy ==="
   Write-Host "`n=== Configuring 1Password ==="
